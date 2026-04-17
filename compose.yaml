@@ -1,0 +1,29 @@
+﻿services:
+  businessordersapp.api:
+    image: businessordersapp.api
+    build:
+      context: ./BusinessOrdersApp.API
+      dockerfile: BusinessOrdersApp.API/Dockerfile
+    ports:
+      - "5001:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=BusinessOrdersAppDb;User=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True
+    depends_on:
+      - sqlserver
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: businessordersapp-sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrong!Passw0rd
+      - MSSQL_PID=Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - businessordersapp-data:/var/opt/mssql
+
+volumes:
+  businessordersapp-data:

@@ -1,0 +1,20 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  businessordersapp.api:
+    build:
+      context: "/Users/maks/git/BusinessOrdersApp/BusinessOrdersApp.API"
+      dockerfile: "BusinessOrdersApp.API/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net10.0/BusinessOrdersApp.API.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "businessordersapp.api:dev"
+    ports: []
+    volumes:
+    - "/Users/maks/git/BusinessOrdersApp/BusinessOrdersApp.API/BusinessOrdersApp.API:/app:rw"
+    - "/Users/maks/git/BusinessOrdersApp/BusinessOrdersApp.API:/src:rw"
+    - "/Users/maks/.nuget/packages:/home/app/.nuget/packages"
+    working_dir: "/app"
