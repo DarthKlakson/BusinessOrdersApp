@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# JetBrains Rider / IntelliJ
+.idea/
+*.DotSettings.user
+*.sln.iml
+
+# .NET build outputs
+**/bin/
+**/obj/
+
+# Visual Studio user files
+*.user
+*.suo
